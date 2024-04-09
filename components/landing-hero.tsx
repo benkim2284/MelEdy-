@@ -38,8 +38,8 @@ export const LandingHero = () => {
           </div>
           <div className = "pointer-events-auto">
           <Link href={"/playground"}>
-            <Button variant="outline" className="rounded-full overflow-hidden p-9 flex-col hover:bg-green-400 hover:text-green-400 bg-gradient-to-r from-purple-400 to-pink-600 justify-center hover:shadow-2xl">
-              <div className="p-1 text-5xl md:p-2 font-bold flex flex-row">
+            <Button variant="outline" className="rounded-full overflow-hidden p-8 flex-col hover:bg-green-400 hover:text-green-400 bg-gradient-to-r from-purple-400 to-pink-600 justify-center hover:shadow-2xl">
+              <div className="p-1 text-3xl md:p-2 font-bold flex flex-row">
                 Playground
                 <div className="ml-1">
                   &gt;
@@ -49,7 +49,6 @@ export const LandingHero = () => {
           </Link>
         </div>
         </div>
-
       </div>
     </div>
   );
