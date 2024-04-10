@@ -35,7 +35,7 @@ const PlaygroundPage = () => {
     }
   });
 
-  const [selectedTab, setSelectedTab] = useState("song");
+  const [selectedTab, setSelectedTab] = useState("complete");
 
   const [fileContent, setFileContent] = useState("");
 
@@ -63,7 +63,6 @@ const PlaygroundPage = () => {
       return;
     }
     try {
-      console.log("Edited text:", fileContent);
       setLoadingStatus(true);
       const lyrics = await generateLyrics(fileContent);
       setLyrics(lyrics);
@@ -265,13 +264,13 @@ const PlaygroundPage = () => {
                 <TabsContent value="song" className="mt-0 border-0 p-0 space-y-2">
                   <div className="flex h-full flex-col space-y-2" style={{ marginBottom: '0px', marginTop: "0px" }}>
                     <div className={cn("text-xl font-bold text-[#111827] ", font.className)}>
-                      Version 1
+                      {title} (Version 1)
                     </div>
                     <audio controls className = "w-full mt-4">
                         <source src={music[0]} type="audio/mp3"/>
                     </audio>
                     <div className={cn("text-xl font-bold text-[#111827] ", font.className)}>
-                      Version 2
+                      {title} (Version 2)
                     </div>
                     <audio controls className = "w-full mt-8">
                         <source src={music[1]} type="audio/mp3"/>
@@ -279,10 +278,10 @@ const PlaygroundPage = () => {
                   </div>
                   <div className="flex h-full flex-col space-y-4">
                     <Textarea
-                      placeholder="Text From TXT or Paste Text HERE"
+                      placeholder="Song Lyrics Displayed Here..."
                       className={cn("min-h-[304px] flex-1 p-4", font.className)}
                       value={lyrics}
-                      style={{ marginTop: '10px' }}
+                      style={{ marginTop: '10px', fontSize: '12px' }}
                       readOnly
                     />
                   </div>
