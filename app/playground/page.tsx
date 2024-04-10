@@ -35,7 +35,7 @@ const PlaygroundPage = () => {
     }
   });
 
-  const [selectedTab, setSelectedTab] = useState("complete");
+  const [selectedTab, setSelectedTab] = useState("song");
 
   const [fileContent, setFileContent] = useState("");
 
@@ -263,7 +263,7 @@ const PlaygroundPage = () => {
 
 {/* LISTEN */}
                 <TabsContent value="song" className="mt-0 border-0 p-0 space-y-2">
-                  <div className="flex h-full flex-col space-y-6" style={{ marginBottom: '262px', marginTop: "20px" }}>
+                  <div className="flex h-full flex-col space-y-2" style={{ marginBottom: '0px', marginTop: "0px" }}>
                     <div className={cn("text-xl font-bold text-[#111827] ", font.className)}>
                       Version 1
                     </div>
@@ -277,11 +277,19 @@ const PlaygroundPage = () => {
                         <source src={music[1]} type="audio/mp3"/>
                     </audio>
                   </div>
+                  <div className="flex h-full flex-col space-y-4">
+                    <Textarea
+                      placeholder="Text From TXT or Paste Text HERE"
+                      className={cn("min-h-[304px] flex-1 p-4", font.className)}
+                      value={lyrics}
+                      style={{ marginTop: '10px' }}
+                      readOnly
+                    />
+                  </div>
                   <div className="flex items-center justify-end space-x-2 ">
                       <Button className={cn("rounded-md bg-slate-100 hover:rounded-md hover:bg-[#111827] text-[#111827] hover:text-green-500", font.className)} onClick={handleBack2}>Back</Button>
                   </div>
                 </TabsContent>
-
               </div>
             </div>
           </div>
