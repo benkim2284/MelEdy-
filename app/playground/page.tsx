@@ -18,7 +18,10 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { generateLyrics } from "../api/lyrics/route.js";
 import { LoadingPopup } from "@/components/ui/loadingPopUp";
+import { LoadingBar } from "@/components/ui/progressBarPopUp";
+
 import { customGenerateAudio } from "../api/music/route.js";
+
 
 const font = Montserrat({ weight: "600", subsets: ["latin"] });
 
@@ -251,7 +254,7 @@ const PlaygroundPage = () => {
                         </div>
                         <div className="flex items-center justify-end">
                           <Button className={cn("rounded-md border-2 bg-green-500 text-white hover:bg-gradient-to-r from-purple-400 to-pink-600 hover:rounded-md hover:text-green-500", font.className)} onClick={handleSubmit}>Submit</Button>
-                          {loading && <LoadingPopup/>}
+                          {loading && <LoadingBar/>}
                         </div>
                       </div>
                     </div>
