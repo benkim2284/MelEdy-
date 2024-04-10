@@ -12,7 +12,7 @@ export const PlaygroundNavbar = () => {
     <nav className="p-4 bg-gradient-to-r from-purple-400 to-pink-600 flex items-center justify-between w-full fixed top-0 left-0 right-0 z-50 pr-8">
       <Link href="/" className="flex items-center">
         <div className="relative h-8 w-8 mr-4">
-          <Image fill alt="Logo" src="/musicLogo.png" className="rounded-md" />
+          <Image fill alt="Logo" src="/melEDy.png" className="rounded-md" />
         </div>
         <h1 className={cn("text-2xl font-bold text-white hover:text-green-400", font.className)}>
           MelEdy
