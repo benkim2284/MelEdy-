@@ -56,8 +56,8 @@ export const LandingContent = () => {
         <div className="w-1/2 flex-col justify-center items-center">
           <h2 className={cn("flex justify-center text-6xl font-bold text-white mb-10", font.className)}>Redefining Education</h2>
           <div className="grid grid-cols-1 gap-4">
-            {instructions.map((item) => (
-              <Card key={item.describe} className="bg-[#192339] border-none text-white">
+            {instructions.map((item, index) => (
+              <Card key={index} className="bg-[#192339] border-none text-white">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-x-2">
                     <div>
@@ -77,8 +77,8 @@ export const LandingContent = () => {
       <div className="space-y-10">
         <h2 className="text-center text-4xl text-white font-extrabold gap-5">Meet The Team</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-          {team.map((item) => (
-            <Card key={item.description} className="bg-[#192339] border-none text-white">
+          {team.map((item, index) => (
+            <Card key={index} className="bg-[#192339] border-none text-white">
               <CardHeader>
                 <CardTitle className="flex items-center gap-x-2">
                   <div>
@@ -94,6 +94,9 @@ export const LandingContent = () => {
           ))}
         </div>
       </div>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 };
