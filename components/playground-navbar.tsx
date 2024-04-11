@@ -15,7 +15,7 @@ export const PlaygroundNavbar = () => {
           <Image fill alt="Logo" src="/melEDy.png" className="rounded-md" />
         </div>
         <h1 className={cn("text-2xl font-bold text-white hover:text-green-400", font.className)}>
-          MelEdy
+          melEDy
         </h1>
       </Link>
       <div className="flex items-center gap-x-2">
@@ -24,10 +24,10 @@ export const PlaygroundNavbar = () => {
             Home
           </Button>
         </Link>
-        <Link href={"/contact"}>
+        <Link href={"https://docs.google.com/forms/d/e/1FAIpQLSe-u3sAXu9P7J0P9Sc51TefCSb5ihivSuDTOunjujnCs66mvQ/viewform"} target="_blank">
           <Button variant="outline" className="rounded-full hover:bg-green-400 hover:shadow-xl">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                Contact <span className="ml-1">&gt;</span>
+              Join Waitlist
             </span>
           </Button>
         </Link>

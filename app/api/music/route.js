@@ -10,7 +10,7 @@ export async function customGenerateAudio(lyrics, title, genre) {
     "wait_audio": true
   }
   const url = `${baseUrl}/api/custom_generate`;
-  console.log(payload);
+
   const response = await axios.post(url, payload, {
     headers: { "Content-Type": "application/json" },
   });
@@ -18,8 +18,6 @@ export async function customGenerateAudio(lyrics, title, genre) {
   const data = response.data;
   const ids = `${data[0].id},${data[1].id}`;
 
-  console.log(`${data[0].id} ==> ${data[0].audio_url}`);
-  console.log(`${data[1].id} ==> ${data[1].audio_url}`);
   return [`${data[0].audio_url}`, `${data[1].audio_url}`];
 }
 
