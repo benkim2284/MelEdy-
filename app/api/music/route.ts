@@ -1,4 +1,4 @@
-async function customGenerateAudio(lyrics, title, genre) {
+async function customGenerateAudio(lyrics: string, title: string, genre: string) {
     const axios = require("axios");
     const baseUrl = process.env.NEXT_PUBLIC_MUSICGEN_URL;
 
@@ -16,9 +16,10 @@ async function customGenerateAudio(lyrics, title, genre) {
     });
 
     const data = response.data;
-    const ids = `${data[0].id},${data[1].id}`;
+    //const ids = `${data[0].id},${data[1].id}`;
 
-    return [`${data[0].audio_url}`, `${data[1].audio_url}`];
+    //return [`${data[0].audio_url}`, `${data[1].audio_url}`];
+    return data;
 }
 
 export { customGenerateAudio as POST };

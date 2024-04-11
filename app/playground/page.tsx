@@ -1,4 +1,5 @@
 "use client";
+
 import { PlaygroundNavbar } from "@/components/playground-navbar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { PlaygroundSidebar } from "@/components/playground-sidebar";
 import { Montserrat } from "next/font/google";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,6 +21,7 @@ import { POST as generateLyrics } from "../api/lyrics/route";
 import { LoadingPopup } from "@/components/ui/loadingPopUp";
 import { LoadingBar } from "@/components/ui/progressBarPopUp";
 import { POST as customGenerateAudio } from "../api/music/route";
+
 
 
 const font = Montserrat({ weight: "600", subsets: ["latin"] });
@@ -45,11 +47,14 @@ const PlaygroundPage = () => {
   const [music, setMusic] = useState(['','']);
   const [loading, setLoadingStatus] = useState(false);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null
+
     const reader = new FileReader();
-    reader.onload = (e) => {
-      setFileContent(e.target.result);
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      if (e.target) {
+        setFileContent(e.target.result as string);
+      }
     };
     if (file) {
       reader.readAsText(file);
@@ -63,8 +68,10 @@ const PlaygroundPage = () => {
     }
     try {
       setLoadingStatus(true);
-      const lyrics = await generateLyrics(fileContent);
-      setLyrics(lyrics);
+      console.log(fileContent);
+      const response = await axios.post('/api/lyrics', {data: `${fileContent}`})
+      console.log(response);
+      setLyrics(response.data);
       setSelectedTab("insert");
       setLoadingStatus(false);
     } catch (error: any) {
@@ -72,7 +79,7 @@ const PlaygroundPage = () => {
     }
   };
 
-  const handleLyricChange = async (event) => {
+  const handleLyricChange = async (event: { target: { value: SetStateAction<string>; }; }) => {
     setLyrics(event.target.value);
   };
 
@@ -84,7 +91,7 @@ const PlaygroundPage = () => {
     try {
       setLoadingStatus(true);
       const generatedSong = await customGenerateAudio(lyrics, title, genre);
-      setMusic(generatedSong);
+      setMusic([generatedSong[0].audio_url, generatedSong[1].audio_url]);
       setSelectedTab("song");
       setLoadingStatus(false);
     } catch (error: any) {
@@ -92,12 +99,12 @@ const PlaygroundPage = () => {
     }
   };
 
-  const handleTitleChange = async (event) => {
+  const handleTitleChange = async (event: { target: { value: SetStateAction<string>; }; }) => {
     setTitle(event.target.value);
 
   };
 
-  const handleGenreChange = async (event) => {
+  const handleGenreChange = async (event: { target: { value: SetStateAction<string>; }; }) => {
     setGenre(event.target.value);
 
   };

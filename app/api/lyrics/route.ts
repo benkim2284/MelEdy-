@@ -1,6 +1,13 @@
-async function generateLyrics(text) {
+import type { NextApiRequest } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
+
+
+async function generateLyrics(req: NextRequest) {
     const axios = require("axios");
     const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+    const body = await new Response(req.body).json()
+    const text  = body.data;
+    console.log(text);
 
     const url = "https://api.openai.com/v1/chat/completions";
     const payload = {
@@ -22,7 +29,7 @@ async function generateLyrics(text) {
     });
 
     const songLyrics = response.data.choices[0].message.content;
-    return songLyrics;
+    return new NextResponse(songLyrics);
 }
 
-export { generateLyrics as POST};
+export { generateLyrics as POST };
