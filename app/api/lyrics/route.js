@@ -22,5 +22,5 @@ export async function generateLyrics(text) {
     });
 
     const songLyrics = response.data.choices[0].message.content;
-    return songLyrics;
+    return new Response(songLyrics);
 }
