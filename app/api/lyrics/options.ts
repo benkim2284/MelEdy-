@@ -1,4 +1,4 @@
-export async function generateLyrics(text) {
+async function generateLyrics(text) {
     const axios = require("axios");
     const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 
@@ -24,3 +24,5 @@ export async function generateLyrics(text) {
     const songLyrics = response.data.choices[0].message.content;
     return songLyrics;
 }
+
+export { generateLyrics }

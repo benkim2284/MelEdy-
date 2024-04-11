@@ -1,3 +1,3 @@
 import { generateLyrics } from "./options";
 
-export { generateLyrics };
+export { generateLyrics as POST};

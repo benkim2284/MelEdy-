@@ -1,6 +1,6 @@
 export async function customGenerateAudio(lyrics, title, genre) {
     const axios = require("axios");
-    const baseUrl = "http://localhost:3000";
+    const baseUrl = process.env.NEXT_PUBLIC_MUSICGEN_URL;
 
     const payload = {
       "prompt": `${lyrics}`,

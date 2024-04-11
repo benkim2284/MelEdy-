@@ -16,7 +16,7 @@ import { formSchema } from "./constants";
 import * as z from "zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { generateLyrics } from "../api/lyrics/route";
+import { POST as generateLyrics } from "../api/lyrics/route";
 import { LoadingPopup } from "@/components/ui/loadingPopUp";
 import { LoadingBar } from "@/components/ui/progressBarPopUp";
 import { customGenerateAudio } from "../api/music/route";
