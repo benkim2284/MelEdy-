@@ -19,7 +19,7 @@ import { useRouter } from "next/navigation";
 import { POST as generateLyrics } from "../api/lyrics/route";
 import { LoadingPopup } from "@/components/ui/loadingPopUp";
 import { LoadingBar } from "@/components/ui/progressBarPopUp";
-import { customGenerateAudio } from "../api/music/route";
+import { POST as customGenerateAudio } from "../api/music/route";
 
 
 const font = Montserrat({ weight: "600", subsets: ["latin"] });
