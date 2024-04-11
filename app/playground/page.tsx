@@ -68,9 +68,7 @@ const PlaygroundPage = () => {
     }
     try {
       setLoadingStatus(true);
-      console.log(fileContent);
       const response = await axios.post('/api/lyrics', {data: `${fileContent}`})
-      console.log(response);
       setLyrics(response.data);
       setSelectedTab("insert");
       setLoadingStatus(false);
