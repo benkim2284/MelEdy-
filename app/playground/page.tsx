@@ -1,4 +1,4 @@
-
+"use client";
 
 import { PlaygroundNavbar } from "@/components/playground-navbar";
 import { Input } from "@/components/ui/input";
