@@ -35,7 +35,7 @@ const PlaygroundPage = () => {
     }
   });
 
-  const [selectedTab, setSelectedTab] = useState("song");
+  const [selectedTab, setSelectedTab] = useState("complete");
 
   const [fileContent, setFileContent] = useState("");
 
@@ -113,22 +113,22 @@ const PlaygroundPage = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col p-20">
-      <PlaygroundNavbar />
-      <div className="flex flex-col p-4 py-8">
-        <h1 className={cn("flex text-4xl font-bold text-[#111827]", font.className)}>
+    <div className="min-h-screen min-w-screen pr-4 pl-4 md:p-10">
+      <div className="z-11 py-10 h-full flex flex-col items-center justify-center">
+        <PlaygroundNavbar />
+      </div>
+      <div className="flex-col flex-1 flex items-center justify-center bg-gradient-to-r from-purple-200 to-pink-300 rounded-xl">
+        <h1 className={cn("flex text-4xl font-extrabold text-[#111827] py-4", font.className)}>
           Playground
         </h1>
-      </div>
-      <div className="h-full flex items-center justify-center bg-gradient-to-r from-purple-200 to-pink-300 rounded-xl gap">
-        <Tabs value={selectedTab} defaultValue={selectedTab} className="flex-1">
-          <div className="container h-full py-7 ">
+        <Tabs value={selectedTab} defaultValue={selectedTab} className="w-full md:w-auto">
+          <div className="container h-full w-full py-7 ">
             <div className="h-full items-stretch gap-6 md:grid-cols-[1fr_300px]">
               <div className="flex flex-col space-y-4 ">
-                <TabsList className={cn("grid grid-cols-3 h-200", font.className)}>
-                  <TabsTrigger value="complete" className="text-lg">Upload File</TabsTrigger>
-                  <TabsTrigger value="insert" className="text-lg">Lyric Generation</TabsTrigger>
-                  <TabsTrigger value="song" className="text-lg ">Listen</TabsTrigger>
+                <TabsList className={cn("grid grid-cols-3  h-200 overflow-x-auto", font.className)}>
+                  <TabsTrigger value="complete" className="text-lg sm:text-xl whitespace-nowrap">Upload File</TabsTrigger>
+                  <TabsTrigger value="insert" className="text-lg sm:text-xl whitespace-nowrap">Lyric Generation</TabsTrigger>
+                  <TabsTrigger value="song" className="text-lg sm:text-xl whitespace-nowrap">Listen</TabsTrigger>
                 </TabsList>
 
                 {/* UPLOAD FILE */}
@@ -145,7 +145,7 @@ const PlaygroundPage = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex h-full flex-col space-y-4">
+                  <div className="flex h-full  w-full flex-col space-y-4">
                     <Textarea
                       placeholder="Text From TXT or Paste Text HERE"
                       className={cn("min-h-[400px] flex-1 p-4", font.className)}
