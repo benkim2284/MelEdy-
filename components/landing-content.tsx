@@ -33,14 +33,14 @@ export const LandingContent = () => {
       <div className="flex flex-row justify-center items-center space-x-12">
         <div className="w-full flex flex-col justify-center items-center">
           <div className = "flex flex-col mb-5">
-          <div className = "flex flex-row space-x-4">
-            <h2 className={cn("flex justify-center text-6xl font-bold text-white", font.className)}>Redefining </h2>
-            <div className="flex flex-row">
-              <h2 className={cn("flex justify-center text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600", font.className)}>Ed</h2>
-              <h2 className={cn("flex justify-center text-6xl font-bold text-white", font.className)}>ucation</h2>
+            <div className = "flex flex-row space-x-4">
+              <h2 className={cn("flex justify-center text-6xl font-bold text-white", font.className)}>Redefining </h2>
+              <div className="flex flex-row">
+                <h2 className={cn("flex justify-center text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600", font.className)}>Ed</h2>
+                <h2 className={cn("flex justify-center text-6xl font-bold text-white", font.className)}>ucation</h2>
+              </div>
             </div>
-          </div>
-          <h2 className = {cn("text-slate-300 text-lg flex justify-center items-center", font.className)}> Quickly turn your studying material into a song in 3 easy steps </h2>
+              <h2 className = {cn("text-slate-300 text-lg flex justify-center items-center py-5", font.className)}> Quickly turn your studying material into a song in 3 easy steps </h2>
           </div>
           <div className="grid sm:grid-cols-1 sm:gap-y-2 lg:grid-cols-3 lg:gap-x-3 lg:w-full ">
             {instructions.map((item, index) => (

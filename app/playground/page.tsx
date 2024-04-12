@@ -1,4 +1,5 @@
 "use client";
+
 import { PlaygroundNavbar } from "@/components/playground-navbar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { PlaygroundSidebar } from "@/components/playground-sidebar";
 import { Montserrat } from "next/font/google";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,11 +17,11 @@ import { formSchema } from "./constants";
 import * as z from "zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { generateLyrics } from "../api/lyrics/route.js";
+import { POST as generateLyrics } from "../api/lyrics/route";
 import { LoadingPopup } from "@/components/ui/loadingPopUp";
 import { LoadingBar } from "@/components/ui/progressBarPopUp";
+import { POST as customGenerateAudio } from "../api/music/route";
 
-import { customGenerateAudio } from "../api/music/route.js";
 
 
 const font = Montserrat({ weight: "600", subsets: ["latin"] });
@@ -46,11 +47,14 @@ const PlaygroundPage = () => {
   const [music, setMusic] = useState(['','']);
   const [loading, setLoadingStatus] = useState(false);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null
+
     const reader = new FileReader();
-    reader.onload = (e) => {
-      setFileContent(e.target.result);
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      if (e.target) {
+        setFileContent(e.target.result as string);
+      }
     };
     if (file) {
       reader.readAsText(file);
@@ -63,10 +67,9 @@ const PlaygroundPage = () => {
       return;
     }
     try {
-      console.log("Edited text:", fileContent);
       setLoadingStatus(true);
-      const lyrics = await generateLyrics(fileContent);
-      setLyrics(lyrics);
+      const response = await axios.post('/api/lyrics', {data: `${fileContent}`})
+      setLyrics(response.data);
       setSelectedTab("insert");
       setLoadingStatus(false);
     } catch (error: any) {
@@ -74,7 +77,7 @@ const PlaygroundPage = () => {
     }
   };
 
-  const handleLyricChange = async (event) => {
+  const handleLyricChange = async (event: { target: { value: SetStateAction<string>; }; }) => {
     setLyrics(event.target.value);
   };
 
@@ -86,7 +89,7 @@ const PlaygroundPage = () => {
     try {
       setLoadingStatus(true);
       const generatedSong = await customGenerateAudio(lyrics, title, genre);
-      setMusic(generatedSong);
+      setMusic([generatedSong[0].audio_url, generatedSong[1].audio_url]);
       setSelectedTab("song");
       setLoadingStatus(false);
     } catch (error: any) {
@@ -94,12 +97,12 @@ const PlaygroundPage = () => {
     }
   };
 
-  const handleTitleChange = async (event) => {
+  const handleTitleChange = async (event: { target: { value: SetStateAction<string>; }; }) => {
     setTitle(event.target.value);
 
   };
 
-  const handleGenreChange = async (event) => {
+  const handleGenreChange = async (event: { target: { value: SetStateAction<string>; }; }) => {
     setGenre(event.target.value);
 
   };
@@ -117,8 +120,8 @@ const PlaygroundPage = () => {
       <div className="z-11 py-10 h-full flex flex-col items-center justify-center">
         <PlaygroundNavbar />
       </div>
-      <div className="flex-col flex-1 flex items-center justify-center bg-gradient-to-r from-purple-200 to-pink-300 rounded-xl">
-        <h1 className={cn("flex text-4xl font-extrabold text-[#111827] py-4", font.className)}>
+      <div className="flex-col flex-1 flex items-center justify-center bg-gradient-to-r from-purple-200 to-pink-300 rounded-xl pt-6">
+        <h1 className={cn("flex text-4xl font-extrabold text-[#111827] py-3", font.className)}>
           Playground
         </h1>
         <Tabs value={selectedTab} defaultValue={selectedTab} className="w-full md:w-auto">
@@ -265,13 +268,13 @@ const PlaygroundPage = () => {
                 <TabsContent value="song" className="mt-0 border-0 p-0 space-y-2">
                   <div className="flex h-full flex-col space-y-2" style={{ marginBottom: '0px', marginTop: "0px" }}>
                     <div className={cn("text-xl font-bold text-[#111827] ", font.className)}>
-                      Version 1
+                      {title} (Version 1)
                     </div>
                     <audio controls className = "w-full mt-4">
                         <source src={music[0]} type="audio/mp3"/>
                     </audio>
                     <div className={cn("text-xl font-bold text-[#111827] ", font.className)}>
-                      Version 2
+                      {title} (Version 2)
                     </div>
                     <audio controls className = "w-full mt-8">
                         <source src={music[1]} type="audio/mp3"/>
@@ -279,10 +282,10 @@ const PlaygroundPage = () => {
                   </div>
                   <div className="flex h-full flex-col space-y-4">
                     <Textarea
-                      placeholder="Text From TXT or Paste Text HERE"
+                      placeholder="Song Lyrics Displayed Here..."
                       className={cn("min-h-[304px] flex-1 p-4", font.className)}
                       value={lyrics}
-                      style={{ marginTop: '10px' }}
+                      style={{ marginTop: '10px', fontSize: '12px' }}
                       readOnly
                     />
                   </div>

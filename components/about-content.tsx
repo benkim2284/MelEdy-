@@ -31,19 +31,19 @@ const team = [
 const mission = [
   {
     description1: <div style={{ textIndent: '1em' }}>
-      In today's fast-paced world, distractions are everywhere, significantly impacting students' ability to focus. This challenge is magnified for those with ADHD, a group that is growing at an unprecedented rate. Technology plays a dual role in this trend, both as a cause and a potential solution. At melEDy, we recognize the urgent need for innovative educational tools that cater to the diverse needs of all students, particularly those with focus disorders. Our mission is grounded in the belief that learning should be personalized, engaging, and accessible to everyone.
+      In today&apos;s fast-paced world, distractions are everywhere, significantly impacting students&apos; ability to focus. This challenge is magnified for those with ADHD, a group that is growing at an unprecedented rate. Technology plays a dual role in this trend, both as a cause and a potential solution. At melEDy, we recognize the urgent need for innovative educational tools that cater to the diverse needs of all students, particularly those with focus disorders. Our mission is grounded in the belief that learning should be personalized, engaging, and accessible to everyone.
     </div>,
-  
+
     description2: <div style={{ textIndent: '1em' }}>
-      Have you ever wondered why it's easier to remember the lyrics of a song than the facts on a flashcard? This phenomenon, known as involuntary musical imagery, is the cornerstone of our approach. By transforming educational materials into catchy songs, melEDy makes learning more enjoyable and effective, especially for students who struggle to maintain their focus.
+      Have you ever wondered why it&apos;s easier to remember the lyrics of a song than the facts on a flashcard? This phenomenon, known as involuntary musical imagery, is the cornerstone of our approach. By transforming educational materials into catchy songs, melEDy makes learning more enjoyable and effective, especially for students who struggle to maintain their focus.
     </div>,
-    
+
     description3: <div style={{ textIndent: '1em' }}>
-      Our founder's personal experience with ADHD has deeply influenced melEDy's vision. We're committed to creating an environment where every student, regardless of their challenges, can thrive. By integrating cutting-edge AI with the universal appeal of music, we're revolutionizing how students absorb and retain information.
+      Our founder&apos;s personal experience with ADHD has deeply influenced melEDy&apos;s vision. We&apos;re committed to creating an environment where every student, regardless of their challenges, can thrive. By integrating cutting-edge AI with the universal appeal of music, we&apos;re revolutionizing how students absorb and retain information.
     </div>,
-  
+
     description4: <div style={{ textIndent: '1em' }}>
-      At melEDy, we're dedicated to unlocking every student's potential. Our approach not only adapts to each learner's unique style but also turns the learning process into a dynamic and memorable experience. We invite school districts to partner with us as we chart a new course in education, making learning more inclusive, engaging, and effective—one melody at a time.
+      At melEDy, we&apos;re dedicated to unlocking every student&apos;s potential. Our approach not only adapts to each learner&apos;s unique style but also turns the learning process into a dynamic and memorable experience. We invite school districts to partner with us as we chart a new course in education, making learning more inclusive, engaging, and effective—one melody at a time.
     </div>,
   },
 ];
@@ -77,7 +77,7 @@ export const AboutContent = () => {
         </div>
       </div>
       </div>
-      
+
     </div>
   );
 };

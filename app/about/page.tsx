@@ -12,7 +12,7 @@ const LandingPage = () => {
   const contentRef = useRef(null);
 
   return (
-    <div className="flex justify-center items-center flex-col">
+    <div className="min-h-screen min-w-screen flex items-center flex-col">
       <div className="z-11 p-20 h-full flex flex-col items-center justify-center space-y-10">
         <LandingNavbar />
       </div>

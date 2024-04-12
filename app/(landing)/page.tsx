@@ -9,13 +9,15 @@ import { Button } from "@/components/ui/button";
 
 
 const LandingPage = () => {
-  const contentRef = useRef(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const scrollToContent = () => {
-    contentRef.current.scrollIntoView({ behavior: "smooth", block: "end" }); // Scroll to the content with smooth behavior
-    const componentRect = contentRef.current.getBoundingClientRect(); // Get the position of the component
-    const newPosition = componentRect.top - 125; // Scroll 20 pixels above the component's current position
-    window.scrollTo({ top: newPosition, behavior: 'smooth' }); //
+    if (contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: "smooth", block: "end" }); // Scroll to the content with smooth behavior
+      const componentRect = contentRef.current.getBoundingClientRect(); // Get the position of the component
+      const newPosition = componentRect.top - 125;
+      window.scrollTo({ top: newPosition, behavior: 'smooth' }); //
+    }
   };
 
   return (

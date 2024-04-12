@@ -13,12 +13,12 @@ const font = Montserrat({ weight: '800', subsets: ['latin'] });
 
 export const LandingNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <nav className="p-4 bg-gradient-to-r from-purple-400 to-pink-600 flex items-center justify-between w-full fixed top-0 left-0 right-0 z-50 pr-8">
       <Link href="/" className="flex items-center">
         <div className="relative h-8 w-8 mr-1">
-          <Image fill alt="Logo" src="/melEDy.png" className="rounded-md" />
+          <Image fill sizes="100%" alt="Logo" src="/melEDy.png" className="rounded-md" />
         </div>
         <div className= {cn("flex flex-row text-2xl font-bold hover:text-green-400", font.className)}>
           <h1 className="text-white ">
@@ -43,15 +43,16 @@ export const LandingNavbar = () => {
             About
           </Button>
         </Link>
-        <Link href={"https://docs.google.com/forms/d/e/1FAIpQLSe-u3sAXu9P7J0P9Sc51TefCSb5ihivSuDTOunjujnCs66mvQ/viewform"} target="_blank">
-          <Button variant="outline" className="rounded-full hover:bg-green-400 hover:shadow-xl">
-            <span className="text-transparent bg-white bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-              Request Demo <span className="ml-1">&gt;</span>
-            </span>
-          </Button>
-        </Link>
+        <div className="pl-4">
+          <Link href={"https://docs.google.com/forms/d/e/1FAIpQLSe-u3sAXu9P7J0P9Sc51TefCSb5ihivSuDTOunjujnCs66mvQ/viewform"} target="_blank">
+            <Button variant="outline" className="rounded-full hover:bg-green-400 hover:shadow-xl">
+              <span className="text-transparent bg-white bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                Request Demo <span className="ml-1">&gt;</span>
+              </span>
+            </Button>
+          </Link>
+        </div>
       </div>
     </nav>
   )
 }
-
