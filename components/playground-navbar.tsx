@@ -43,11 +43,6 @@ export const PlaygroundNavbar = () => {
             Home
           </Button>
         </Link>
-        <Link href={"/about"}>
-          <Button variant="ghost" className="bg-transparent text-white rounded-half hover:text-green-400 hover:bg-gradient-to-r from-purple-300 to-pink-400 hover:shadow-xl">
-            About
-          </Button>
-        </Link>
         <div className="pl-4">
           <Dialog>
             <DialogTrigger asChild>

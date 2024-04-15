@@ -24,6 +24,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog"
 import Link from "next/link"
+import { AboutContent } from "./about-content";
 
 
 const font = Montserrat({ weight: '600', subsets: ['latin'] });
@@ -95,100 +96,104 @@ export const LandingContent = () => {
         <div className="w-full flex flex-col justify-center items-center">
           <div className="flex flex-col">
             <h2 className={cn("flex justify-center text-6xl font-bold text-white", font.className)}>Demo </h2>
-          </div>
-          <div className="flex justify-center relative">
-            <Carousel>
-              <CarouselContent>
-                <CarouselItem>
-                  <CardContainer className="flex justify-center flex-center text-center">
-                    <CardBody className={cn("bg-[#192339] border-black/[0.1] sm:w-[30rem] h-auto rounded-xl p-6 border", font.className)}>
-                      <CardItem
-                        as="p"
-                        translateZ="100"
-                        className="flex justify-center items-center text-center relative text-white max-w-sm"
-                      >
-                        DEMO COMING SOON
-                      </CardItem>
-                      <div className="flex justify-end items-center mt-20">
+            <div className="flex justify-center relative">
+              <Carousel>
+                <CarouselContent>
+                  <CarouselItem>
+                    <CardContainer className="flex justify-center flex-center text-center">
+                      <CardBody className={cn("bg-[#192339] border-black/[0.1] sm:w-[30rem] h-auto rounded-xl p-6 border", font.className)}>
                         <CardItem
-                          translateZ={20}
-                          translateX={40}
-                          as={Dialog}
-                          
+                          as="p"
+                          translateZ="100"
+                          className="flex justify-center items-center text-center relative text-white max-w-sm"
                         >
-                          <Dialog>
-                            <DialogTrigger asChild>
-                              <Button className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold">
-                                  Join Waitlist
-                              </Button>
-                            </DialogTrigger>
-                            <DialogContent className={cn("sm:max-w-[425px] bg-gradient-to-r from-purple-400 to-pink-600 border-none", font.className)}>
-                              <DialogHeader>
-                                <DialogTitle className="text-white text-2xl">Waitlist</DialogTitle>
-                                <DialogDescription className="text-[#111827]">
-                                  Sign up to get access to the playground and start using melEDy
-                                </DialogDescription>
-                              </DialogHeader>
-                              <div className="grid gap-4 py-4 text-[#111827]">
-                                <div className="grid grid-cols-4 items-center gap-4">
-                                  <Label htmlFor="name" className="text-right">
-                                    Name
-                                  </Label>
-                                  <Input
-                                    id="name"
-                                    placeholder="John Doe"
-                                    className="col-span-3"
-                                  />
-                                </div>
-                                <div className="grid grid-cols-4 items-center gap-4">
-                                  <Label htmlFor="email" className="text-right">
-                                    Email
-                                  </Label>
-                                  <Input
-                                    id="email"
-                                    placeholder="JohnDoe@gmail.com"
-                                    className="col-span-3"
-                                  />
-                                </div>
-                                <div className="grid grid-cols-4 items-center gap-4">
-                                  <Label htmlFor="role" className="text-right">
-                                    Role
-                                  </Label>
-                                  <Input
-                                    id="role"
-                                    placeholder="Student"
-                                    className="col-span-3"
-                                  />
-                                </div>
-                                <div className="grid grid-cols-4 items-center gap-4">
-                                  <Label htmlFor="school" className="text-right">
-                                    School / District
-                                  </Label>
-                                  <Input
-                                    id="school"
-                                    placeholder="John Doe College"
-                                    className="col-span-3"
-                                  />
-                                </div>
-                              </div>
-                              <DialogFooter>
-                                <Button type="submit" className="hover:bg-green-400">Sign-Up</Button>
-                              </DialogFooter>
-                            </DialogContent>
-                          </Dialog>
+                          DEMO COMING SOON
                         </CardItem>
-                      </div>
-                    </CardBody>
-                  </CardContainer>
-                </CarouselItem>
-              </CarouselContent>
-            </Carousel>
+                        <div className="flex justify-end items-center mt-20">
+                          <CardItem
+                            translateZ={20}
+                            translateX={40}
+                            as={Dialog}
+                          >
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold">
+                                  Join Waitlist
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent className={cn("sm:max-w-[425px] bg-gradient-to-r from-purple-400 to-pink-600 border-none", font.className)}>
+                                <DialogHeader>
+                                  <DialogTitle className="text-white text-2xl">Waitlist</DialogTitle>
+                                  <DialogDescription className="text-[#111827]">
+                                    Sign up to get access to the playground and start using melEDy
+                                  </DialogDescription>
+                                </DialogHeader>
+                                <div className="grid gap-4 py-4 text-[#111827]">
+                                  <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="name" className="text-right">
+                                      Name
+                                    </Label>
+                                    <Input
+                                      id="name"
+                                      placeholder="John Doe"
+                                      className="col-span-3"
+                                    />
+                                  </div>
+                                  <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="email" className="text-right">
+                                      Email
+                                    </Label>
+                                    <Input
+                                      id="email"
+                                      placeholder="JohnDoe@gmail.com"
+                                      className="col-span-3"
+                                    />
+                                  </div>
+                                  <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="role" className="text-right">
+                                      Role
+                                    </Label>
+                                    <Input
+                                      id="role"
+                                      placeholder="Student"
+                                      className="col-span-3"
+                                    />
+                                  </div>
+                                  <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="school" className="text-right">
+                                      School / District
+                                    </Label>
+                                    <Input
+                                      id="school"
+                                      placeholder="John Doe College"
+                                      className="col-span-3"
+                                    />
+                                  </div>
+                                </div>
+                                <DialogFooter>
+                                  <Button type="submit" className="hover:bg-green-400">Sign-Up</Button>
+                                </DialogFooter>
+                              </DialogContent>
+                            </Dialog>
+                          </CardItem>
+                        </div>
+                      </CardBody>
+                    </CardContainer>
+                  </CarouselItem>
+                </CarouselContent>
+              </Carousel>
+            </div>
           </div>
         </div>
       </div>
+      <div>
+      <AboutContent/>
+      </div>
       <br />
       <br />
+      
       <br />
+
     </div>
   );
 };
