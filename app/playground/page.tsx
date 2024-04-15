@@ -86,6 +86,14 @@ const PlaygroundPage = () => {
       setLyrics("Must input lyrics to generate song!!!");
       return;
     }
+    if (title == "") {
+      alert("Please enter a title for the song.");
+      return;
+    }
+    if (genre == "") {
+      alert("Please enter a genre or style for the song.");
+      return;
+    }
     try {
       setLoadingStatus(true);
       const generatedSong = await customGenerateAudio(lyrics, title, genre);
@@ -128,7 +136,7 @@ const PlaygroundPage = () => {
           <div className="container h-full w-full py-7 ">
             <div className="h-full items-stretch gap-6 md:grid-cols-[1fr_300px]">
               <div className="flex flex-col space-y-4 ">
-                <TabsList className={cn("grid grid-cols-3  h-200 overflow-x-auto", font.className)}>
+                <TabsList className={cn("grid grid-cols-3  h-200 overflow-x-auto sm:grid-cols-3", font.className)}>
                   <TabsTrigger value="complete" className="text-lg sm:text-xl whitespace-nowrap">Upload File</TabsTrigger>
                   <TabsTrigger value="insert" className="text-lg sm:text-xl whitespace-nowrap">Lyric Generation</TabsTrigger>
                   <TabsTrigger value="song" className="text-lg sm:text-xl whitespace-nowrap">Listen</TabsTrigger>

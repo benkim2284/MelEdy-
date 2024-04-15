@@ -3,6 +3,28 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { FileMusic, ListMusic, Music } from "lucide-react";
 import { Montserrat } from "next/font/google";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card"
+import { Button } from "./ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { Label } from "@/components/ui/label";
+import { Input } from "./ui/input";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
+import Link from "next/link"
+
 
 const font = Montserrat({ weight: '600', subsets: ['latin'] });
 
@@ -32,15 +54,15 @@ export const LandingContent = () => {
     <div className="px-10 pb-30 gap-2 space-y-20 flex flex-col">
       <div className="flex flex-row justify-center items-center space-x-12">
         <div className="w-full flex flex-col justify-center items-center">
-          <div className = "flex flex-col mb-5">
-            <div className = "flex flex-row space-x-4">
+          <div className="flex flex-col mb-5">
+            <div className="flex flex-row space-x-4">
               <h2 className={cn("flex justify-center text-6xl font-bold text-white", font.className)}>Redefining </h2>
               <div className="flex flex-row">
                 <h2 className={cn("flex justify-center text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600", font.className)}>Ed</h2>
                 <h2 className={cn("flex justify-center text-6xl font-bold text-white", font.className)}>ucation</h2>
               </div>
             </div>
-              <h2 className = {cn("text-slate-300 text-lg flex justify-center items-center py-5", font.className)}> Quickly turn your studying material into a song in 3 easy steps </h2>
+            <h2 className={cn("text-slate-300 text-lg flex justify-center items-center py-5", font.className)}> Quickly turn your studying material into a song in 3 easy steps </h2>
           </div>
           <div className="grid sm:grid-cols-1 sm:gap-y-2 lg:grid-cols-3 lg:gap-x-3 lg:w-full ">
             {instructions.map((item, index) => (
@@ -48,12 +70,12 @@ export const LandingContent = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-x-2">
                     <div>
-                      <div className = "pb-3">
+                      <div className="pb-3">
                         <item.avatar />
                       </div>
                       <div>
-                      <p className="text-2xl">{item.name}</p>
-                      <p className="text-zinc-400 text-sm">{item.title}</p>
+                        <p className="text-2xl">{item.name}</p>
+                        <p className="text-zinc-400 text-sm">{item.title}</p>
                       </div>
                     </div>
                   </CardTitle>
@@ -66,7 +88,104 @@ export const LandingContent = () => {
           </div>
         </div>
       </div>
-
+      <br />
+      <br />
+      <br />
+      <div className="flex flex-row justify-center items-center">
+        <div className="w-full flex flex-col justify-center items-center">
+          <div className="flex flex-col">
+            <h2 className={cn("flex justify-center text-6xl font-bold text-white", font.className)}>Demo </h2>
+          </div>
+          <div className="flex justify-center relative">
+            <Carousel>
+              <CarouselContent>
+                <CarouselItem>
+                  <CardContainer className="flex justify-center flex-center text-center">
+                    <CardBody className={cn("bg-[#192339] border-black/[0.1] sm:w-[30rem] h-auto rounded-xl p-6 border", font.className)}>
+                      <CardItem
+                        as="p"
+                        translateZ="100"
+                        className="flex justify-center items-center text-center relative text-white max-w-sm"
+                      >
+                        DEMO COMING SOON
+                      </CardItem>
+                      <div className="flex justify-end items-center mt-20">
+                        <CardItem
+                          translateZ={20}
+                          translateX={40}
+                          as={Dialog}
+                          
+                        >
+                          <Dialog>
+                            <DialogTrigger asChild>
+                              <Button className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold">
+                                  Join Waitlist
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className={cn("sm:max-w-[425px] bg-gradient-to-r from-purple-400 to-pink-600 border-none", font.className)}>
+                              <DialogHeader>
+                                <DialogTitle className="text-white text-2xl">Waitlist</DialogTitle>
+                                <DialogDescription className="text-[#111827]">
+                                  Sign up to get access to the playground and start using melEDy
+                                </DialogDescription>
+                              </DialogHeader>
+                              <div className="grid gap-4 py-4 text-[#111827]">
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                  <Label htmlFor="name" className="text-right">
+                                    Name
+                                  </Label>
+                                  <Input
+                                    id="name"
+                                    placeholder="John Doe"
+                                    className="col-span-3"
+                                  />
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                  <Label htmlFor="email" className="text-right">
+                                    Email
+                                  </Label>
+                                  <Input
+                                    id="email"
+                                    placeholder="JohnDoe@gmail.com"
+                                    className="col-span-3"
+                                  />
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                  <Label htmlFor="role" className="text-right">
+                                    Role
+                                  </Label>
+                                  <Input
+                                    id="role"
+                                    placeholder="Student"
+                                    className="col-span-3"
+                                  />
+                                </div>
+                                <div className="grid grid-cols-4 items-center gap-4">
+                                  <Label htmlFor="school" className="text-right">
+                                    School / District
+                                  </Label>
+                                  <Input
+                                    id="school"
+                                    placeholder="John Doe College"
+                                    className="col-span-3"
+                                  />
+                                </div>
+                              </div>
+                              <DialogFooter>
+                                <Button type="submit" className="hover:bg-green-400">Sign-Up</Button>
+                              </DialogFooter>
+                            </DialogContent>
+                          </Dialog>
+                        </CardItem>
+                      </div>
+                    </CardBody>
+                  </CardContainer>
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel>
+          </div>
+        </div>
+      </div>
       <br />
       <br />
       <br />

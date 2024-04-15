@@ -6,6 +6,7 @@ import { AboutContent } from "@/components/about-content";
 import Spline from "@splinetool/react-spline";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { PlaygroundNavbar } from "@/components/playground-navbar";
 
 
 const LandingPage = () => {
@@ -14,7 +15,7 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen min-w-screen flex items-center flex-col">
       <div className="z-11 p-20 h-full flex flex-col items-center justify-center space-y-10">
-        <LandingNavbar />
+        <PlaygroundNavbar />
       </div>
       <div className="flex flex-col" ref={contentRef}>
         <AboutContent />
