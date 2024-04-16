@@ -6,7 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Montserrat } from "next/font/google";
 import { useState } from 'react';
 import MobileMenu from "./mobile-menu";
-
+import { Label } from "@/components/ui/label";
+import { Input } from "./ui/input";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
 
 
 const font = Montserrat({ weight: '800', subsets: ['latin'] });
@@ -20,7 +30,7 @@ export const LandingNavbar = () => {
         <div className="relative h-8 w-8 mr-1">
           <Image fill sizes="100%" alt="Logo" src="/melEDy.png" className="rounded-md" />
         </div>
-        <div className= {cn("flex flex-row text-2xl font-bold hover:text-green-400", font.className)}>
+        <div className={cn("flex flex-row text-2xl font-bold hover:text-green-400", font.className)}>
           <h1 className="text-white ">
             mel
           </h1>
@@ -33,24 +43,75 @@ export const LandingNavbar = () => {
         </div>
       </Link>
       <div className={`flex items-center gap-x-2`}>
+
         <Link href={"/playground"}>
           <Button variant="ghost" className="bg-transparent text-white rounded-half hover:text-green-400 hover:bg-gradient-to-r from-purple-300 to-pink-400 hover:shadow-xl">
             Playground
           </Button>
         </Link>
-        <Link href={"/about"}>
-          <Button variant="ghost" className="bg-transparent text-white rounded-half hover:text-green-400 hover:bg-gradient-to-r from-purple-300 to-pink-400 hover:shadow-xl">
-            About
-          </Button>
-        </Link>
         <div className="pl-4">
-          <Link href={"https://docs.google.com/forms/d/e/1FAIpQLSe-u3sAXu9P7J0P9Sc51TefCSb5ihivSuDTOunjujnCs66mvQ/viewform"} target="_blank">
-            <Button variant="outline" className="rounded-full hover:bg-green-400 hover:shadow-xl">
-              <span className="text-transparent bg-white bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                Request Demo <span className="ml-1">&gt;</span>
-              </span>
-            </Button>
-          </Link>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" className="rounded-full hover:bg-green-400 hover:shadow-xl">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                  Join Waitlist <span className="ml-1">&gt;</span>
+                </span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className={cn("sm:max-w-[425px] bg-gradient-to-r from-purple-400 to-pink-600 border-none", font.className)}>
+              <DialogHeader>
+                <DialogTitle className="text-white text-2xl">Waitlist</DialogTitle>
+                <DialogDescription className="text-[#111827]">
+                  Sign up to get access to the playground and start using melEDy
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4 text-[#111827]">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="name" className="text-right">
+                    Name
+                  </Label>
+                  <Input
+                    id="name"
+                    placeholder="John Doe"
+                    className="col-span-3"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="email" className="text-right">
+                    Email
+                  </Label>
+                  <Input
+                    id="email"
+                    placeholder="JohnDoe@gmail.com"
+                    className="col-span-3"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="role" className="text-right">
+                    Role
+                  </Label>
+                  <Input
+                    id="role"
+                    placeholder="Student"
+                    className="col-span-3"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="school" className="text-right">
+                    School / District
+                  </Label>
+                  <Input
+                    id="school"
+                    placeholder="John Doe College"
+                    className="col-span-3"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button type="submit" className="hover:bg-green-400">Sign-Up</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </nav>
